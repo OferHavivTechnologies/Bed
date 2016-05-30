@@ -8,4 +8,5 @@ at this point i decide to resolve it - at lease personally. I start learning ele
 You can see the [Project's master plan](https://github.com/oferhaviv/Bed/wiki/Project's-Master-Plan)
 
 and of course the [progress page](https://github.com/oferhaviv/Bed/wiki/Progress-by-Stages)
+
 someday i will build a landing page :) [GitHub Pages](http://oferhaviv.github.io/Bed )
