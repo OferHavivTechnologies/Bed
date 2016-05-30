@@ -37,7 +37,8 @@
 #define BLYNK_PRINT Serial  // Comment this out to disable prints and save space
 #define VP_RTC_WIDGET V5    // virtual port for RTC
 #define VP_TIMER_DIPLAY V2  // virtual port for timer display
-#define VP_SLIDER V3        // virtual port for slider
+#define VP_SLIDER V6        // virtual port for slider
+#define VP_APPLY_BUTTON V3    // virtual port for apply button
 #define VP_DEBUG_CURRENT_TIME_DISPLAY V1 // virtual port for debug display
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
@@ -95,7 +96,7 @@ bool isTimer(myTime t)
 myTime addMinutes(myTime t, int m)
 {
   t.minutes +=m;
-  while ((t.minutes + m) >=60)
+  while (t.minutes >=60)
   {
     t.hours ++;
     t.minutes -=60;
@@ -142,10 +143,15 @@ void checkTimer()
   if (side_selector)
   {
     //lia's side
-     currentTimer = showTime(timer_1);
+    if (isTimer(timer_1)){
+      currentTimer = showTime(timer_1);
+    }
   }else{
     //ofer's side
+    if(isTimer(timer_2))
+    {
      currentTimer = showTime(timer_2);
+    }
   }  
   
 
@@ -174,7 +180,7 @@ void setup()
 }
 
 // Apply button hit
-BLYNK_WRITE(V6)
+BLYNK_WRITE(VP_APPLY_BUTTON)
 {
   Serial.println("apply button hit");
 
